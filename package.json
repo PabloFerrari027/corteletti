@@ -1,0 +1,52 @@
+{
+  "name": "c",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@chakra-ui/react": "^2.4.9",
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@hookform/resolvers": "^2.9.10",
+    "@next/font": "13.1.4",
+    "@prismicio/client": "^6.7.3",
+    "@prismicio/next": "^1.0.2",
+    "@prismicio/react": "^2.5.1",
+    "@sendgrid/mail": "^7.7.0",
+    "@stripe/stripe-js": "^1.46.0",
+    "@types/node": "18.11.18",
+    "@types/react": "18.0.27",
+    "@types/react-dom": "18.0.10",
+    "axios": "^1.2.3",
+    "bcrypt": "^5.1.0",
+    "faunadb": "^4.7.1",
+    "firebase": "^9.16.0",
+    "framer-motion": "^8.5.2",
+    "next": "13.1.4",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-firebase-hooks": "^5.1.1",
+    "react-hook-form": "^7.42.1",
+    "react-icons": "^4.7.1",
+    "react-toastify": "^9.1.1",
+    "socket.io": "^4.5.4",
+    "socket.io-client": "^4.5.4",
+    "stripe": "^11.7.0",
+    "swiper": "^8.4.6",
+    "typescript": "4.9.4",
+    "uuid": "^9.0.0",
+    "yup": "^0.32.11"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.0",
+    "@types/react-icons": "^3.0.0",
+    "@types/sass": "^1.43.1",
+    "@types/socket.io": "^3.0.2",
+    "@types/uuid": "^9.0.0"
+  }
+}
