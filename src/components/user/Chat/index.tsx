@@ -87,6 +87,8 @@ const Chat: React.FC = () => {
 
   useEffect(() => {
     console.log(messages)
+    setLoading(false)
+    setLoadingMsg(false)
 
     handleScrollChat()
   }, [messages])
