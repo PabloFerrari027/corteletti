@@ -34,6 +34,8 @@ const ioHandler = (req: NextApiRequest, res: any) => {
         const res = await FindMessagesByRoom(room)
         socket.to(room).emit('messages', res)
 
+        console.log({ res })
+
         const unread = await Unread(room, whereof)
 
         if (whereof === 'admin') socket.to(room).emit('unreadUser', unread)
@@ -51,6 +53,7 @@ const ioHandler = (req: NextApiRequest, res: any) => {
 
       socket.on('messages', async () => {
         const res = await FindMessagesByRoom(room)
+
         socket.to(room).emit('messages', res)
       })
 
