@@ -66,6 +66,8 @@ const Chat: React.FC = () => {
       socket?.emit('read', 'admin')
 
       socket?.on('messages', (data: Message[]) => {
+        console.log(data)
+
         setLoading(false)
         setLoadingMsg(false)
         setMessages(data)
