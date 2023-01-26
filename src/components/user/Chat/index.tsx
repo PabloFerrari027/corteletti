@@ -69,6 +69,7 @@ const Chat: React.FC = () => {
         setLoading(false)
         setLoadingMsg(false)
         setMessages(data)
+        console.log(isLoading, messages)
       })
 
       socket?.on('check', () => {
@@ -86,10 +87,6 @@ const Chat: React.FC = () => {
   }, [socket, session?.email])
 
   useEffect(() => {
-    console.log(messages)
-    setLoading(false)
-    setLoadingMsg(false)
-
     handleScrollChat()
   }, [messages])
 
