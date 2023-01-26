@@ -87,6 +87,8 @@ const Chat: React.FC = () => {
   }, [socket, session?.email])
 
   useEffect(() => {
+    console.log(isLoading, messages)
+
     handleScrollChat()
   }, [messages])
 
