@@ -63,38 +63,42 @@ const Chat: React.FC = () => {
   function handleSocketMessages() {
     console.log('handleSocketMessages')
 
-    setLoading(false)
-    setLoadingMsg(false)
-    setMessages([
-      {
-        data: {
-          message: 'oii',
-          room: 'pabloferraricaliari@gmail.com',
-          timestamp: new Date(),
-          visualized: true,
-          whereof: 'user'
+    try {
+      setLoading(false)
+      setLoadingMsg(false)
+      setMessages([
+        {
+          data: {
+            message: 'oii',
+            room: 'pabloferraricaliari@gmail.com',
+            timestamp: new Date(),
+            visualized: true,
+            whereof: 'user'
+          },
+          ref: {
+            '@ref': {
+              id: uuid()
+            }
+          }
         },
-        ref: {
-          '@ref': {
-            id: uuid()
+        {
+          data: {
+            message: 'oii',
+            room: 'pabloferraricaliari@gmail.com',
+            timestamp: new Date(),
+            visualized: true,
+            whereof: 'user'
+          },
+          ref: {
+            '@ref': {
+              id: uuid()
+            }
           }
         }
-      },
-      {
-        data: {
-          message: 'oii',
-          room: 'pabloferraricaliari@gmail.com',
-          timestamp: new Date(),
-          visualized: true,
-          whereof: 'user'
-        },
-        ref: {
-          '@ref': {
-            id: uuid()
-          }
-        }
-      }
-    ])
+      ])
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   const initializeSocket = async () => {
