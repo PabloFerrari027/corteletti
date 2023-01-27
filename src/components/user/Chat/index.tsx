@@ -34,6 +34,18 @@ const Chat: React.FC = () => {
   const router = useRouter()
   const socket = useSocket(session?.email)
 
+  socket?.emit('read', 'admin')
+
+  socket?.on('messages', (data: Message[]) => {
+    setLoading(false)
+    setLoadingMsg(false)
+    setMessages(data)
+  })
+
+  socket?.on('check', () => {
+    if (router.asPath === window.location.href) socket.emit('read', 'admin')
+  })
+
   function handleScrollChat() {
     if (chatRef?.current) {
       if (chatRef.current.scrollHeight > chatRef.current.offsetHeight) {
@@ -60,76 +72,14 @@ const Chat: React.FC = () => {
     }
   }
 
-  function handleSocketMessages() {
-    console.log('handleSocketMessages')
-
-    try {
-      setLoading(false)
-      setLoadingMsg(false)
-      setMessages([
-        {
-          data: {
-            message: 'oii',
-            room: 'pabloferraricaliari@gmail.com',
-            timestamp: new Date(),
-            visualized: true,
-            whereof: 'user'
-          },
-          ref: {
-            '@ref': {
-              id: uuid()
-            }
-          }
-        },
-        {
-          data: {
-            message: 'oii',
-            room: 'pabloferraricaliari@gmail.com',
-            timestamp: new Date(),
-            visualized: true,
-            whereof: 'user'
-          },
-          ref: {
-            '@ref': {
-              id: uuid()
-            }
-          }
-        }
-      ])
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
-  const initializeSocket = async () => {
-    try {
-      setLoading(true)
-
-      socket?.emit('read', 'admin')
-
-      socket?.on('messages', (data: Message[]) => {
-        console.log(data)
-
-        handleSocketMessages()
-      })
-
-      socket?.on('check', () => {
-        if (router.asPath === window.location.href) socket.emit('read', 'admin')
-      })
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
   useEffect(() => {
     if (socket && session?.email) {
-      initializeSocket()
+      setLoading(true)
     }
   }, [socket, session?.email])
 
   useEffect(() => {
     handleScrollChat()
-    console.log(messages)
   }, [messages])
 
   return (
