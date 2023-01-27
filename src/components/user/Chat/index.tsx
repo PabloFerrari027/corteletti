@@ -117,6 +117,7 @@ const Chat: React.FC = () => {
 
   useEffect(() => {
     handleScrollChat()
+    console.log(messages)
   }, [messages])
 
   return (
