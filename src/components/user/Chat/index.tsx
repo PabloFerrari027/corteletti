@@ -7,6 +7,7 @@ import { useRouter } from 'next/router'
 import Footer from './Footer'
 import Loading from './Loading'
 import { useSocket } from '../../../hooks/useSocket'
+import { v4 as uuid } from 'uuid'
 
 interface Message {
   ref: {
@@ -68,8 +69,36 @@ const Chat: React.FC = () => {
       socket?.on('messages', (data: Message[]) => {
         setLoading(false)
         setLoadingMsg(false)
-        setMessages(data)
-        console.log(isLoading, messages, data)
+        setMessages([
+          {
+            data: {
+              message: 'oii',
+              room: 'pabloferraricaliari@gmail.com',
+              timestamp: new Date(),
+              visualized: true,
+              whereof: 'user'
+            },
+            ref: {
+              '@ref': {
+                id: uuid()
+              }
+            }
+          },
+          {
+            data: {
+              message: 'oii',
+              room: 'pabloferraricaliari@gmail.com',
+              timestamp: new Date(),
+              visualized: true,
+              whereof: 'user'
+            },
+            ref: {
+              '@ref': {
+                id: uuid()
+              }
+            }
+          }
+        ])
       })
 
       socket?.on('check', () => {
