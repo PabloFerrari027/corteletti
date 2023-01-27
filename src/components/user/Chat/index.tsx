@@ -60,6 +60,43 @@ const Chat: React.FC = () => {
     }
   }
 
+  function handleSocketMessages() {
+    console.log('handleSocketMessages')
+
+    setLoading(false)
+    setLoadingMsg(false)
+    setMessages([
+      {
+        data: {
+          message: 'oii',
+          room: 'pabloferraricaliari@gmail.com',
+          timestamp: new Date(),
+          visualized: true,
+          whereof: 'user'
+        },
+        ref: {
+          '@ref': {
+            id: uuid()
+          }
+        }
+      },
+      {
+        data: {
+          message: 'oii',
+          room: 'pabloferraricaliari@gmail.com',
+          timestamp: new Date(),
+          visualized: true,
+          whereof: 'user'
+        },
+        ref: {
+          '@ref': {
+            id: uuid()
+          }
+        }
+      }
+    ])
+  }
+
   const initializeSocket = async () => {
     try {
       setLoading(true)
@@ -67,38 +104,7 @@ const Chat: React.FC = () => {
       socket?.emit('read', 'admin')
 
       socket?.on('messages', (data: Message[]) => {
-        setLoading(false)
-        setLoadingMsg(false)
-        setMessages([
-          {
-            data: {
-              message: 'oii',
-              room: 'pabloferraricaliari@gmail.com',
-              timestamp: new Date(),
-              visualized: true,
-              whereof: 'user'
-            },
-            ref: {
-              '@ref': {
-                id: uuid()
-              }
-            }
-          },
-          {
-            data: {
-              message: 'oii',
-              room: 'pabloferraricaliari@gmail.com',
-              timestamp: new Date(),
-              visualized: true,
-              whereof: 'user'
-            },
-            ref: {
-              '@ref': {
-                id: uuid()
-              }
-            }
-          }
-        ])
+        handleSocketMessages()
       })
 
       socket?.on('check', () => {
